@@ -8,4 +8,6 @@ boto3==1.26.0
 google-genai==1.13.0
 streamlit==1.32.0
 gunicorn==21.2.0
-pycairo==1.23.0 
+pycairo==1.23.0
+setuptools>=65.5.1
+wheel>=0.38.0 
