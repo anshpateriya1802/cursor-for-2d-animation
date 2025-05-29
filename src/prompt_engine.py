@@ -3,6 +3,7 @@ from google import genai
 import re
 from dotenv import load_dotenv
 from manim import *
+from manim import Scene, Circle, ValueTracker, always_redraw, Create
 
 load_dotenv()
 
