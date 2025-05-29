@@ -35,7 +35,7 @@ app = FastAPI(lifespan=lifespan)
 # CORS middleware for frontend communication
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:8501"],  # Added Streamlit port
+    allow_origins=["*"],  # Allow all origins for Streamlit Cloud
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -47,11 +47,11 @@ class PromptInput(BaseModel):
     filename: str  # The filename for the rendered video
     quality: str = "l"  # Quality flag (low by default)
 
-# Quality flag mappings
+# Quality flag mappings for Manim 0.17.3
 QUALITY_FLAGS = {
-    "l": "-pql",  # Low quality
-    "m": "-pqm",  # Medium quality
-    "h": "-pqh",  # High quality
+    "l": "-ql",  # Low quality
+    "m": "-qm",  # Medium quality
+    "h": "-qh",  # High quality
 }
 
 @app.get("/")
@@ -64,7 +64,7 @@ async def generate(data: PromptInput):
         start_time = time.time()
         prompt = data.prompt.strip()
         filename = data.filename.strip().replace(" ", "_")
-        quality_flag = QUALITY_FLAGS.get(data.quality.lower(), "-pql")
+        quality_flag = QUALITY_FLAGS.get(data.quality.lower(), "-ql")
 
         # Path for the generated Python file
         scene_path = os.path.join(GENERATED_DIR, f"{filename}.py")
@@ -107,7 +107,7 @@ async def generate(data: PromptInput):
                 status_code=400
             )
 
-        # Path to the rendered video
+        # Path to the rendered video (Manim 0.17.3 path structure)
         video_path = os.path.join(OUTPUT_DIR, "videos", filename, "480p15", f"{filename}.mp4")
         
         # Wait for video file to be created (up to 30 seconds)
