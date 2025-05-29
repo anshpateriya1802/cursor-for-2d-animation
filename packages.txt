@@ -1,18 +1,15 @@
-pkg-config
-libcairo2-dev
-libpango1.0-dev
-libpangocairo-1.0-0
-libgirepository1.0-dev
-gcc
-libffi-dev
-python3-dev
-python3-distutils
-python3-setuptools
-python3-pip
-python3-venv
-python3-wheel
-python3.11-dev
-python3.11-venv
-python3.11-distutils
-python3.11-setuptools
-python3.11-wheel 
+   pkg-config
+   libcairo2-dev
+   libpango1.0-dev
+   libpangocairo-1.0-0
+   libgirepository1.0-dev
+   gcc
+   libffi-dev
+   python3-dev
+   python3-distutils
+   python3-setuptools
+   python3-pip
+   python3-venv
+   python3-wheel
+   build-essential
+   python3-all-dev
